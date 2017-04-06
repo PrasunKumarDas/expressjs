@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     rename = require('gulp-rename'),
     concat =  require('gulp-concat'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+	nodemon = require('gulp-nodemon');
 
 // config to hold the path files
 var paths = {
@@ -45,7 +46,15 @@ gulp.task('uglify', function () {
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./public/js'))
 });
-
+//Start a node server
+gulp.task('serve', ['watch'], function(){
+  return nodemon({
+    script: 'app.js',
+  })
+  .on('restart', function(){
+    console.log('restarted');
+  })
+})
 // Concat the built javascript files from the uglify task with the vendor/lib javascript files into one file
 // Let's save the users some bandwith
 gulp.task('concatJs', function () {

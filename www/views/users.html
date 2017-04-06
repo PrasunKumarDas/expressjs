@@ -1,0 +1,56 @@
+<div ng-module="userModule">
+
+<div ng-include src="'views/includes/header.html'"></div>
+    <div class="page-content">
+    	<div class="row">
+		  <div ng-include src="'views/includes/nav.html'"></div>
+		  <div class="col-md-10">
+		  	<div class="row">
+		  		<div class="col-md-12">
+		  			<div class="content-box-large">
+		  			<div class="content-box-header">
+			  					<div class="panel-title">Users</div>
+								
+								<div class="panel-options">
+									<input type="text" ng-model="search" placeholder="Search">
+									<a  data-rel="collapse" ng-click="refresh()"><i class="glyphicon glyphicon-refresh"></i></a>
+									<a class="btn btn-success" href="#addUser" >Add</a>
+								</div>
+				  			</div>
+
+		  			<table class="table table-bordered">
+				              <thead>
+				                <tr>	
+				                  <th>#</th>
+				                  <th>Name<br></th>
+				                  <th>Email</th>
+				                  <th>Phone</th>
+				                  <th>Action</th>
+				                </tr>
+				              </thead>
+				              <tbody>
+				                <tr ng-repeat="user in users | filter:search">
+				                  <td>{{user.id}}</td>
+				                  <td>{{user.name}}</td>
+				                  <td>{{user.email}}</td>
+				                  <td>{{user.phone}}</td>
+				                  <td><button class="btn btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn  btn-danger">Delete</button></td>
+				                </tr>
+				               
+				              </tbody>
+				            </table>
+		  			</div>
+		  		</div>
+
+		  	
+		  	</div>
+
+		  	
+
+		  
+		  </div>
+		</div>
+    </div>
+<div ng-include src="'views/includes/footer.html'"></div>
+	
+</div>  

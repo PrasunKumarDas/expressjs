@@ -1,0 +1,62 @@
+<div ng-module="userModule">
+
+<div ng-include src="'views/includes/header.html'"></div>
+    <div class="page-content">
+    	<div class="row">
+		  <div ng-include src="'views/includes/nav.html'"></div>
+		  <div class="col-md-10">
+		  	<div class="row">
+		  		<div class="col-md-12">
+		  			<div class="col-md-6">
+	  					<div class="content-box-large">
+			  				<div class="panel-heading">
+					            <div class="panel-title">Add User</div>
+					          
+					            <div class="panel-options">
+					              <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+					              <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+					            </div>
+					        </div>
+			  				<div class="panel-body">
+			  					<form action="">
+									<fieldset>
+										<div class="form-group">
+											<label>Name</label>
+											<input class="form-control" placeholder="Name" type="text" ng-model="user.name">
+										</div>
+										<div class="form-group">
+											<label>Email</label>
+											<input class="form-control" placeholder="Email" type="text" ng-model="user.email">
+										</div>
+
+										<div class="form-group">
+											<label>Password</label>
+											<input class="form-control" placeholder="Password" type="password" ng-model="user.password">
+										</div>
+										<div class="form-group">
+											<label>Phone</label>
+											<input class="form-control" placeholder="Phone" type="text" ng-model="user.phone">
+										</div>
+										
+									</fieldset>
+									<div>
+										<button class="btn btn-primary"  ng-click="addUser()">Save</button>
+									</div>
+								</form>
+			  				</div>
+			  			</div>
+	  				</div>
+		  		</div>
+
+		  	
+		  	</div>
+
+		  	
+
+		  
+		  </div>
+		</div>
+    </div>
+<div ng-include src="'views/includes/footer.html'"></div>
+	
+</div>  

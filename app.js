@@ -1,44 +1,35 @@
 /**
- * Module dependencies.
+ * Author: Prasun Kumar Das
+   TCS/1305985
  */
-
 var express        = require('express'),
+	app 		   = express(),
     path           = require('path'),
-    mongoose       = require('mongoose'),
     logger         = require('morgan'),
     bodyParser     = require('body-parser'),
-    compress       = require('compression'),
-    favicon        = require('static-favicon'),
     methodOverride = require('method-override'),
     errorHandler   = require('errorhandler'),
-    config         = require('./config'),
-    routes         = require('./routes');
+    config         = require('./config'),    
+	fs			   = require('fs'),
+	routes 		   = require('./routes')(app);
 
+/*fs.readdirSync(__dirname+'/server/models').forEach(function(filename){
+	if(~filename.indexOf('.js')){
+		require('./server/models/'+filename);
+	}
 
-mongoose.connect(config.database.url);
-mongoose.connection.on('error', function () {
-  console.log('mongodb connection error');
-});
+})*/
 
-var app = express();
-
-
-
-/**
- * Express configuration.
- */
 app.set('port', config.server.port);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'ejs');
 
 app
-  .use(compress())
-  .use(favicon())
   .use(logger('dev'))
   .use(bodyParser())
   .use(methodOverride())
-  .use(express.static(path.join(__dirname, 'public')))
-  .use(routes.indexRouter)
+  .use(express.static(path.join(__dirname, 'client')))
+ 
   .use(function (req, res) {
     res.status(404).render('404', {title: 'Not Found :('});
   });
@@ -48,5 +39,5 @@ if (app.get('env') === 'development') {
 }
 
 app.listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + app.get('port'));
+  console.log('Server running at http://localhost:' + app.get('port'));
 });
